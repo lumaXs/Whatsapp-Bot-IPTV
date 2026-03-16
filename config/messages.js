@@ -1,101 +1,91 @@
-/**
- * Bot message templates and responses
- * Centralized message management for consistent communication
- */
-
 export const MESSAGES = {
-  welcome: (name) => `Hello, ${name}! Welcome!`,
-  intro: 'I am your virtual assistant. How can I help you?',
-  menuPrompt: "Type '!menu' to see available options",
+    welcome: (name) => `Olá, ${name}! Seja bem-vindo(a)! 👋`,
+    intro: 'Sou seu assistente virtual. Como posso te ajudar?',
+    menuPrompt: "Digite *!menu* para ver as opções disponíveis",
 
-  trial: {
-    generating: 'Please wait while I generate your trial access...',
-    wait: 'This may take a moment depending on server load.',
-    instructions: 'Use the credentials above to access your trial. For player setup help, send *"!player"*',
-    expired: (name) => `Hi ${name}, your trial period has ended. Would you like to subscribe?`,
-  },
-};
+    trial: {
+        generating: 'Aguarde enquanto gero seu acesso de teste...',
+        wait: 'Isso pode levar alguns instantes dependendo da carga do servidor.',
+        instructions: 'Use as credenciais acima para acessar seu teste. Para ajuda com configuração do player, envie *"!player"*',
+        expired: (name) => `Olá ${name}, seu período de teste encerrou. Deseja assinar um plano?`,
+    },
+}
 
 export const MENU_OPTIONS = {
-  main: `
-📋 MAIN MENU
+    main: `
+📋 MENU PRINCIPAL
 
-1️⃣ About us
-2️⃣ What is IPTV?
-3️⃣ Plans and pricing
-4️⃣ Subscribe
-5️⃣ Available content
-6️⃣ Request free trial
+1️⃣ Sobre nós
+2️⃣ O que é IPTV?
+3️⃣ Planos e preços
+4️⃣ Assinar
+5️⃣ Conteúdo disponível
+6️⃣ Solicitar teste grátis
 
-📌 Send the option number to continue.
+📌 Envie o número da opção para continuar.
 `.trim(),
 
-  about: `🔍 About Us
+    about: `🔍 Sobre Nós
 
-We provide a complete IPTV platform with live channels, movies, series, sports and more.`,
+Oferecemos uma plataforma completa de IPTV com canais ao vivo, filmes, séries, esportes e muito mais.`,
 
-  whatIsIptv: `📡 What is IPTV?
+    whatIsIptv: `📡 O que é IPTV?
 
-IPTV is TV content transmitted over the internet. Watch your favorite content on mobile, TV or computer without cables or antennas.`,
+IPTV é a transmissão de conteúdo de TV pela internet. Assista seus conteúdos favoritos no celular, TV ou computador sem cabos ou antenas.`,
 
-  plans: `💰 Plans and Pricing
+    plans: `💰 Planos e Preços
 
-- Monthly: $25.00
-- Quarterly: $60.00
-- Annual: $200.00
+- Mensal: R$ 25,00
+- Trimestral: R$ 60,00
+- Anual: R$ 200,00
 
-Payment methods: PIX, Credit Card, Bank Transfer.`,
+Formas de pagamento: PIX, Cartão de Crédito, Transferência Bancária.`,
 
-  subscription: `📝 Subscribe
+    subscription: `📝 Assinar
 
-To subscribe now, send: subscribe
-Or contact our support team.`,
+Para assinar agora, envie: assinar
+Ou entre em contato com nosso suporte.`,
 
-  content: `🎬 Available Content
+    content: `🎬 Conteúdo Disponível
 
-+ Live TV channels
-+ Sports events (Soccer, UFC, etc.)
-+ Latest movies and series
-+ Kids content
-+ 24/7 programming`,
-};
++ Canais de TV ao vivo
++ Eventos esportivos (Futebol, UFC, etc.)
++ Filmes e séries em lançamento
++ Conteúdo infantil
++ Programação 24/7`,
+}
 
 export const CUSTOM_RESPONSES = {
-  subscribe: `📲 Subscription
+    subscribe: `📲 Assinatura
 
-To subscribe, send your full name and choose a plan:
-Monthly | Quarterly | Annual
+Para assinar, envie seu nome completo e escolha um plano:
+Mensal | Trimestral | Anual
 
-We'll get back to you shortly.`,
+Entraremos em contato em breve.`,
 
-  requestTrial: `📺 *Free Trial*
+    requestTrial: `📺 *Teste Grátis*
 
-Please provide:
+Por favor, informe:
 
-1️⃣ Full name
-2️⃣ City/State
+1️⃣ Nome completo
+2️⃣ Cidade/Estado
 
-We'll activate your 24h access.`,
-};
+Ativaremos seu acesso de 24h.`,
+}
 
-/**
- * Formats trial response from API data
- * @param {Object} data - API response data
- * @returns {string} Formatted message
- */
 export const formatTrialResponse = (data) => {
-  return `🎉 Trial access generated successfully!
+    return `🎉 Acesso de teste gerado com sucesso!
 
-👤 Username: ${data.username}
-🔑 Password: ${data.password}
+👤 Usuário: ${data.username}
+🔑 Senha: ${data.password}
 🌐 DNS: ${data.dns}
-📦 Package: ${data.package}
-🔗 Connections: ${data.connections}
-📆 Created: ${data.createdAtFormatted}
-⏰ Expires: ${data.expiresAtFormatted}
+📦 Pacote: ${data.package}
+🔗 Conexões: ${data.connections}
+📆 Criado em: ${data.createdAtFormatted}
+⏰ Expira em: ${data.expiresAtFormatted}
 
-📺 M3U Link: ${data.m3uUrl}
-🔗 Short Link: ${data.shortUrl}
+📺 Link M3U: ${data.m3uUrl}
+🔗 Link curto: ${data.shortUrl}
 
-🛒 Payment: ${data.payUrl}`.trim();
-};
+🛒 Pagamento: ${data.payUrl}`.trim()
+}

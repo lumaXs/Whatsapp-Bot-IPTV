@@ -1,11 +1,11 @@
-import { NORMALIZATION_PATTERNS } from '../config/constants.js';
+import { NORMALIZATION_PATTERNS } from '../config/constants.js'
 
 /**
  * Creates an asynchronous delay
  * @param {number} ms - Milliseconds to wait
  * @returns {Promise<void>}
  */
-export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 /**
  * Normalizes text by removing diacritics, punctuation and emojis
@@ -13,18 +13,18 @@ export const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
  * @returns {string} Normalized text
  */
 export const normalizeText = (text) => {
-  if (!text || typeof text !== 'string') return '';
+    if (!text || typeof text !== 'string') return ''
 
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(NORMALIZATION_PATTERNS.diacritics, '')
-    .replace(NORMALIZATION_PATTERNS.punctuation, '')
-    .replace(NORMALIZATION_PATTERNS.emojiFaces, '')
-    .replace(NORMALIZATION_PATTERNS.emojiSymbols, '')
-    .replace(NORMALIZATION_PATTERNS.whitespace, ' ')
-    .trim();
-};
+    return text
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(NORMALIZATION_PATTERNS.diacritics, '')
+        .replace(NORMALIZATION_PATTERNS.punctuation, '')
+        .replace(NORMALIZATION_PATTERNS.emojiFaces, '')
+        .replace(NORMALIZATION_PATTERNS.emojiSymbols, '')
+        .replace(NORMALIZATION_PATTERNS.whitespace, ' ')
+        .trim()
+}
 
 /**
  * Extracts first name from full name
@@ -33,9 +33,9 @@ export const normalizeText = (text) => {
  * @returns {string} First name or fallback
  */
 export const getFirstName = (fullName, fallback = 'friend') => {
-  if (!fullName || typeof fullName !== 'string') return fallback;
-  return fullName.split(' ')[0] || fallback;
-};
+    if (!fullName || typeof fullName !== 'string') return fallback
+    return fullName.split(' ')[0] || fallback
+}
 
 /**
  * Formats API error for user-friendly display
@@ -43,9 +43,8 @@ export const getFirstName = (fullName, fallback = 'friend') => {
  * @returns {string} Formatted error message
  */
 export const formatApiError = (error) => {
-  const message = error?.message || 'Unknown error';
-  return `⚠️ An error occurred while accessing the API.\n\nMessage: ${message}`;
-};
+    return `⚠️ Ocorreu um erro ao processar sua solicitação. Tente novamente mais tarde.`
+}
 
 /**
  * Validates if object contains all required properties
@@ -54,16 +53,16 @@ export const formatApiError = (error) => {
  * @returns {boolean} True if valid
  */
 export const validateObject = (obj, requiredProps) => {
-  if (!obj || typeof obj !== 'object') return false;
-  return requiredProps.every((prop) => obj.hasOwnProperty(prop) && obj[prop] != null);
-};
+    if (!obj || typeof obj !== 'object') return false
+    return requiredProps.every((prop) => obj.hasOwnProperty(prop) && obj[prop] != null)
+}
 
 /**
  * Console logger with emoji prefixes
  */
 export const logger = {
-  info: (message) => console.log(`ℹ️  ${message}`),
-  success: (message) => console.log(`✅ ${message}`),
-  error: (message) => console.error(`❌ ${message}`),
-  warn: (message) => console.warn(`⚠️  ${message}`),
-};
+    info: (message) => console.log(`ℹ️  ${message}`),
+    success: (message) => console.log(`✅ ${message}`),
+    error: (message) => console.error(`❌ ${message}`),
+    warn: (message) => console.warn(`⚠️  ${message}`),
+}
